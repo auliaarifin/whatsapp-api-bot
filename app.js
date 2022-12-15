@@ -22,12 +22,15 @@ client.on('authenticated', () => {
   console.log('AUTHENTICATED');
 });
 
+const db = require('./src/db/database');
 
-client.on('message', msg => {
-  if (msg.body == '!ping') {
-    msg.reply('Hey There !! Whatsapp Bot under Developmnet');
-  } else if (msg.body == 'ul') {
-    msg.reply("Hey There !! Whatsapp Bot under Developmnet");
+client.on('message', async msg => {
+  const keyword = msg.body.toLowerCase();
+  const replyMessage = await db.getReply(keyword);
+
+  if (replyMessage !== false) {
+    msg.reply(replyMessage);
+
   } else if (msg.body == 'Lek') {
     msg.reply("Hey There !! Whatsapp Bot under Developmnet");
   }
