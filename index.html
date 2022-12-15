@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whatsapp API BOT</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Whatsapp API</h1>
+    <p>Powered by Uhuy</p>
+    <img src="" alt="QR Code" id="qrcode">
+    <h3>Logs : </h3>
+    <ul class="logs"></ul>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+    integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js"
+    integrity="sha512-HTENHrkQ/P0NGDFd5nk6ibVtCkcM7jhr2c7GyvXp5O+4X6O5cQO9AhqFzM+MdeBivsX7Hoys2J7pp2wdgMpCvw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $(document).ready(function(){
+      var socket = io.connect('http://localhost:3000', {path: '/socket.io' })
+      socket.on('message', function(msg){
+        $('.logs').append($('<li>').text(msg))
+
+      });
+
+      socket.on('qr', function(src){
+        $('#qrcode').attr('src', src);
+      })
+    });
+  </script>
+  </body>
+
+</html>
