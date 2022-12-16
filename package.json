@@ -17,6 +17,7 @@
     "http": "^0.0.1-security",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
+    "node-cron": "^3.0.2",
     "puppeteer": "^19.4.0",
     "qrcode": "^1.5.1",
     "qrcode-terminal": "^0.12.0",
