@@ -3,15 +3,18 @@ const express = require('express');
 const socketIO = require('socket.io');
 const qrcode = require('qrcode');
 const http = require('http');
-const { url } = require('inspector');
+const cron = require('node-cron')
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server)
 
+
 const client = new Client({
   authStrategy: new LocalAuth()
 });
+
+
 
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: __dirname })
@@ -28,7 +31,7 @@ client.on('message', async msg => {
   const keyword = msg.body.toLowerCase();
   const replyMessage = await db.getReply(keyword);
 
-  if (replyMessage !== false) {
+  if (replyMessage !== false ) {
     msg.reply(replyMessage);
 
   } else if (msg.body == 'Tes') {
@@ -60,3 +63,7 @@ io.on('connection', function(socket){
 server.listen(3000, function () {
   console.log('Running on port 3000')
 }) 
+
+// cron.schedule('* * * * * *', () =>{
+//   console.log('Testing scheduler')
+// })
