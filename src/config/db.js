@@ -11,8 +11,8 @@ let con = async () => {
 
 const getReply = async (keyword) => {
   const connection = await con();
-  const [rows] = await connection.execute('SELECT COUNT(nmr_jobit) AS message FROM jobit WHERE nmr_jobit = ? ', [keyword]);
-  if (rows.length > 0) return rows[0].message;
+  const [rows] = await connection.query('SELECT ket FROM jobit WHERE nmr_jobit = ? ', [keyword]);
+  if (rows.length > 0) return rows[0].ket;
   return false;
 }
 
