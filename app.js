@@ -22,7 +22,7 @@ client.on('authenticated', () => {
   console.log('AUTHENTICATED');
 });
 
-const db = require('./src/db/database');
+const db = require('./src/config/db');
 
 client.on('message', async msg => {
   const keyword = msg.body.toLowerCase();
@@ -31,7 +31,7 @@ client.on('message', async msg => {
   if (replyMessage !== false) {
     msg.reply(replyMessage);
 
-  } else if (msg.body == 'Lek') {
+  } else if (msg.body == 'Tes') {
     msg.reply("Hey There !! Whatsapp Bot under Developmnet");
   }
 });
