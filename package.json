@@ -4,7 +4,7 @@
   "description": "Whatsapp api v1",
   "main": "app.js",
   "scripts": {
-    "bot-service": "nodemon app.js",
+    "wa-bot": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
+    "express-validator": "^6.14.2",
     "http": "^0.0.1-security",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
