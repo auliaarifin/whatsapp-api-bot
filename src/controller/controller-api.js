@@ -1,10 +1,35 @@
-const getReply = async (user_kode) => {
-  const connection = await createConnection();
-  const [rows] = await connection.execute('SELECT user_password FROM tuser WHERE user_kode = ? ', [user_kode]);
-  if (rows.length > 0) return rows[0].message; 
-  return false;
-}
+// const config = require('../config/db');
+// const mysql = require('mysql');
+// const pool = mysql.createPool(config);
 
-module.exports = {
-  getReply,
-}
+// pool.on('error', (err) => {
+//   console.log(err);
+// })
+
+
+
+// module.exports = {
+//   getReply,
+//   reply(req, res) {
+//     let Brg_kode = req.params.Brg_kode;
+//     pool.getConnection(function (err, connection) {
+//       if (err) throw err;
+//       connection.query(
+//         `
+//         SELECT * FROM tbarang WHERE Brg_kode = ?
+//         `
+//         , [Brg_kode],
+//         function (error, results) {
+//           if (error) throw error;
+//           res.send({
+//             success: true,
+//             message: "Berhasil",
+//             data: results
+//           })
+//         })
+//         connection.release();
+//     })
+//   }
+
+// }
+
