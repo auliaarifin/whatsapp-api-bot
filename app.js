@@ -5,15 +5,10 @@ const qrcode = require('qrcode');
 const http = require('http');
 const cron = require('node-cron')
 const { body, validationResult } = require('express-validator');
-const TEST_JID = '6281393233307@c.us';
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-const kontak = require("./contact.json")
-
-const nomor = ['6281393233307@c.us', '"6289505654708@c.us"'];
-const imgUrl = './media/kapal.png'
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -81,9 +76,6 @@ client.on('message', async msg => {
   const replyMessage = await db.getReply(keyword);
 
 
-
-
-
   if (replyMessage !== false) {
     msg.reply(replyMessage);
 
@@ -101,7 +93,7 @@ client.on('message', async msg => {
     chat.sendMessage();
     client.searchMessages(number, message);
   } else if (msg.body == '!media') {
-    client.sendMessage(msg.from, media, { caption: `'Here\n your requested media.` });
+    client.sendMessage(msg.from, media, { caption: `Here's\n your requested media.` });
   } else if (msg.body === '!buttons') {
     let button = new Buttons(
       'Button body',
